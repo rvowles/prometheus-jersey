@@ -1,0 +1,13 @@
+= Prometheus Jersey Support
+
+This is a fairly obvious, and yet simple library that lets you register a filter that will
+histogram track your resource methods by adding an annotation rather than typing in code.
+
+Simply add:
+
+----
+@Prometheus(name="metric_name", help="your help")
+----
+
+To your actual method (not the interface if you are separating api from implementation for using
+client proxies). It tries to be efficient by keeping track of ignored methods as well.
