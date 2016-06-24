@@ -12,7 +12,7 @@
 	<packaging>jar</packaging>
 	<name>Prometheus Jersey Annotation Support</name>
 	<url>http://maven.apache.org</url>
-	<version>1.1-SNAPSHOT</version>
+	<version>1.1</version>
 
 	<properties>
 		<maven.version>3.3.9</maven.version>
@@ -131,5 +131,9 @@
 
 
 
+
+  <scm>
+    <tag>prometheus-jersey-1.1</tag>
+  </scm>
 </project>
 
