@@ -11,3 +11,9 @@ Simply add:
 
 To your actual method (not the interface if you are separating api from implementation for using
 client proxies). It tries to be efficient by keeping track of ignored methods as well.
+
+To then use it in your Jersey application, add in:
+
+----
+register(PrometheusFilter.class);
+----
