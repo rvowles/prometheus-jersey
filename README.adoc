@@ -17,3 +17,15 @@ To then use it in your Jersey application, add in:
 ----
 register(PrometheusFilter.class);
 ----
+
+It is, of course, released in Apache Maven Central, so just add the dependency to your pom:
+
+----
+<dependency>
+  <groupId>com.bluetrainsoftware</groupId>
+	<artifactId>prometheus-jersey</artifactId>
+  <version>1.1</version>
+</dependency>
+----
+
+NB: always check the latest pom.xml in this repository, it will be one back (1.2-SNAPSHOT means current version is 1.1)
