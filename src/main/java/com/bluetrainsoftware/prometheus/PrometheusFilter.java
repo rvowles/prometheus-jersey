@@ -36,7 +36,7 @@ public class PrometheusFilter implements ApplicationEventListener {
 	}
 
 	private static class PrometheusHistogramListener implements RequestEventListener {
-		private static ConcurrentHashMap<Method, Histogram> histograms = new ConcurrentHashMap<>();
+		private static ConcurrentHashMap<String, Histogram> histograms = new ConcurrentHashMap<>();
 		private static ConcurrentHashMap<Method, Method> ignored = new ConcurrentHashMap<>();
 		private Histogram.Timer timer;
 		private final String prefix;
@@ -52,22 +52,21 @@ public class PrometheusFilter implements ApplicationEventListener {
 				return; // seen it before, its ignored, lets get outta here
 			}
 
-			Histogram tracker = histograms.get(method);
+			Prometheus instrument = method.getAnnotation(Prometheus.class);
 
-			if (tracker == null) { // we don't know about it either way
-				Prometheus instrument = method.getAnnotation(Prometheus.class);
+			if (instrument != null) {
+				Histogram tracker = histograms.get(instrument.name());
 
-				if (instrument != null) {
+				if (tracker == null) { // we don't know about it either way
 					tracker = Histogram.build().name(prefix + instrument.name()).help(instrument.help()).register();
-					histograms.put(method, tracker);
-				} else {
-					ignored.put(method, method);
+					histograms.put(instrument.name(), tracker);
 				}
-			}
 
-			if (tracker != null) {
 				timer = tracker.startTimer();
 				requests.inc();
+
+			} else {
+				ignored.put(method, method);
 			}
 		}
 
