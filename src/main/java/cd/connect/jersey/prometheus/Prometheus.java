@@ -1,4 +1,4 @@
-package com.bluetrainsoftware.prometheus;
+package cd.connect.jersey.prometheus;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -17,6 +17,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Prometheus {
-	String name();
-	String help();
+	String name() default "";
+	String help() default "";
 }
