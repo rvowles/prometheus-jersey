@@ -1,5 +1,5 @@
 = Prometheus Jersey Support
 
-This repository has swapped to the Connect project. The new repository is now https://github.com/ClearPointNZ/connect-prometheus-jersey[here].
+This repository has swapped to the Connect project. The new repository is now https://github.com/ClearPointNZ/connect-java/tree/master/libraries/prometheus-jersey-filter[here].
 
 That repository now uses a Feature and dynamic bindings.
